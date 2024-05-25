@@ -1,0 +1,18 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+from selenium.webdriver.support.select import Select
+# Start the Driver
+with webdriver.Chrome() as driver:  
+    driver.get("https://v1.training-support.net/selenium/javascript-alerts")
+
+    # Click on confirm
+    driver.find_element(By.ID,"prompt").click();
+    alert = driver.switch_to.alert
+    alert.send_keys("Awesome!")
+    print("Text of Alter pop-up", alert.text)
+    alert.accept()

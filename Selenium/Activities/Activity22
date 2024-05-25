@@ -1,0 +1,29 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+from selenium.webdriver.support.select import Select
+# Start the Driver
+with webdriver.Chrome() as driver:      
+    wait = WebDriverWait(driver, 10)
+    actions = webdriver.ActionChains(driver)
+    # Navigate to the URL
+    driver.get("https://v1.training-support.net/selenium/popups")
+    # Print the title of the page
+    print("Page title is: ", driver.title)
+
+    button = driver.find_element(By.XPATH,"//button[text()='Sign In']");
+    actions.move_to_element(button).perform()
+    print("Tooltip messagees: ",button.get_attribute("data-tooltip"))
+    button.click()
+
+    #Enter username and password
+    driver.find_element(By.ID,"username").send_keys("admin")
+    driver.find_element(By.ID,"password").send_keys("password")
+    driver.find_element(By.XPATH, "//button[text()='Log in']").click()
+
+    print("Login message" + driver.find_element(By.ID,"action-confirmation").text)
+    driver.close

@@ -1,0 +1,30 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+from selenium.webdriver.support.select import Select
+# Start the Driver
+with webdriver.Chrome() as driver:  
+    
+    wait = WebDriverWait(driver, 10)
+    # Navigate to the URL
+    driver.get("https://v1.training-support.net/selenium/selects")
+    # Print the title of the page
+    print("Page title is: ", driver.title)
+    dropdown = driver.find_element(By.ID, "multi-select")
+    s =  Select(dropdown)
+    s.select_by_visible_text("Javascript")
+    print("Selected option : "+s.first_selected_option.text)
+    s.select_by_index(4);
+    print("Selected option : "+s.first_selected_option.text); 
+    s.select_by_index(5);
+    print("Selected option : "+s.first_selected_option.text); 
+    s.select_by_index(6);
+    print("Selected option : "+s.first_selected_option.text);     
+    s.select_by_value("node");
+    print("Selected option : "+s.first_selected_option.text)  
+    s.deselect_by_index(5);
+    print("Selected option : "+s.first_selected_option.text)  

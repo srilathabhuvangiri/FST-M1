@@ -1,0 +1,25 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+# Start the Driver
+with webdriver.Chrome() as driver: 
+    # Navigate to URL
+    driver.get("https://v1.training-support.net/selenium/ajax")    
+    wait = WebDriverWait(driver, 10)
+    print("Page title is: ", driver.title)
+    # Find the "Change Content" button and click it
+    driver.find_element(By.CSS_SELECTOR, "button.violet").click()
+    # Wait for the text "HELLO!" to appear
+    wait.until(expected_conditions.text_to_be_present_in_element((By.TAG_NAME, "h1"), "HELLO!"))
+    hello_text = driver.find_element(By.TAG_NAME, "h1").text
+    # Print the text
+    print(hello_text)
+
+    # Wait for "I'm late!" to appear
+    wait.until(expected_conditions.text_to_be_present_in_element((By.TAG_NAME, "h3"), "I'm late!"))
+    late_text = driver.find_element(By.TAG_NAME, "h3").text
+    # Print the text
+    print(late_text)

@@ -1,0 +1,22 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+
+# Start the Driver
+with webdriver.Chrome() as driver:
+   actions = webdriver.ActionChains(driver)
+   driver.get("https://v1.training-support.net/selenium/input-events")
+    
+# page title
+print("page title", driver.title)
+#perform click
+actions.click().perform()
+print("Active side :", driver.find_element(By.CLASS_NAME,"active").text);   
+#perform double click
+actions.double_click().perform()
+print("After Double click :", driver.find_element(By.CLASS_NAME,"active").text); 
+#perform right click
+actions.context_click().perform()
+print("After Right click :", driver.find_element(By.CLASS_NAME,"active").text); 
+
+driver.close()

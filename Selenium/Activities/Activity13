@@ -1,0 +1,29 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+# Start the Driver
+with webdriver.Chrome() as driver: 
+    
+    wait = WebDriverWait(driver, 10)
+    # Navigate to the URL
+    driver.get("https://v1.training-support.net/selenium/tables")
+    # Print the title of the page
+    print("Page title is: ", driver.title)
+
+    column = driver.find_elements(By.XPATH,"//table[@class='ui celled striped table']/tbody/tr");
+    print("Number of coulmns :" , len(column));
+
+    rows =  driver.find_elements(By.XPATH,"//table[@class='ui celled striped table']//tr[1]/td");
+    print("Number of rows :",+ len(rows));
+    # the cell values in the third row of the table
+    third_row=driver.find_elements(By.XPATH,"//table[@class='ui celled striped table']//tr[3]/td");
+    print(" Third row cell values : ")
+    for row in third_row:
+        print("Cell value: ", row.text)
+
+    # get cell value at the second row second column.
+    secondRowSecondCell = driver.find_element(By.XPATH,"//table[@class='ui celled striped table']//tr[2]/td[2]");
+    print(" second Row Second Cell: ", secondRowSecondCell.text )

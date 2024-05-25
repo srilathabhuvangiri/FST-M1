@@ -1,0 +1,19 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+# Start the Driver
+with webdriver.Chrome() as driver: 
+    
+    wait = WebDriverWait(driver, 10)
+    # Navigate to the URL
+    driver.get("https://v1.training-support.net/selenium/dynamic-controls")
+    # Print the title of the page
+    print("Page title is: ", driver.title)
+
+    inputtext = driver.find_element(By.ID,"input-text")
+    print("Input Text is enabled :" , inputtext.is_enabled())
+    driver.find_element(By.ID,"toggleInput").click()
+    print("Input Text is enabled :" , inputtext.is_enabled())

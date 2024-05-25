@@ -1,0 +1,27 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+# Start the Driver
+with webdriver.Chrome() as driver: 
+    
+    wait = WebDriverWait(driver, 10)
+    # Navigate to the URL
+    driver.get("https://v1.training-support.net/selenium/dynamic-attributes")
+    # Print the title of the page
+    print("Page title is: ", driver.title)
+
+    #Enter username
+    driver.find_element(By.XPATH,"(//input[contains(@class,'username')])[1]").send_keys("admin");
+    #Enter password
+    driver.find_element(By.XPATH,"(//input[contains(@class,'password')])[1]").send_keys("password");
+    #Click olgin
+    driver.find_element(By.XPATH,"//button[text()='Log in']").click();
+
+    #Verify Text
+    message = driver.find_element(By.ID,"action-confirmation");
+    print("Confirm message :", message)
+    driver.close

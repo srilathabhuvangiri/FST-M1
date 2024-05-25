@@ -1,0 +1,13 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+
+# Start the Driver
+with webdriver.Chrome() as driver:
+  
+  # Open the browser to the URL
+  driver.get("https://v1.training-support.net")  
+  print("Webpage title :", driver.title)
+  driver.find_element(By.ID, "about-link").click()  
+  print("Webpage title after navigation :" + driver.title) 
+  driver.quit()

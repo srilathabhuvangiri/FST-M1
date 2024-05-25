@@ -1,0 +1,20 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.keys import Keys
+
+# Start the Driver
+with webdriver.Chrome() as driver:
+    actions = webdriver.ActionChains(driver)
+# Navigate to the URL
+driver.get("https://v1.training-support.net/selenium/input-events")    
+print("Page title is: ", driver.title)
+# Then Perform the action in separate lines using the actions object
+actions.send_keys("S") # Press the key of your first names initial
+actions.key_down(Keys.CONTROL) # Press and hold the CONTROL key
+actions.send_keys("a") # Press "a"
+actions.send_keys("c") # Press "c"
+actions.key_up(Keys.CONTROL) # Relase the CONTROL key
+actions.perform() # Perform the action chain
+driver.close
+  

@@ -1,7 +1,7 @@
 @activity5
-Feature: "Login Test with example"
+Feature: Data driven test with Example
 
-    Scenario Outline: Testing Login without example
+    Scenario Outline: Testing with Data from Scenario
     Given User is on Login page
     When User enters "<username>" and "<password>"
     Then Read the page title and confirmation message

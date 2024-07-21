@@ -1,8 +1,8 @@
 @activity4
-Feature: "Login Test without example"
+Feature: Data driven test without Example
 
 
-  Scenario: Testing Login without example
+  Scenario: esting with Data from Scenario
     Given User is on Login page
     When User enters "admin" and "password"
     Then Read the page title and confirmation message
